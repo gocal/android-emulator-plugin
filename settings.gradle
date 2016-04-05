@@ -1,2 +1,4 @@
 rootProject.name = 'android-emulator-plugin'
 
+include ':sample'
+project(':sample').projectDir = new File('src/test/fixtures/sample')
