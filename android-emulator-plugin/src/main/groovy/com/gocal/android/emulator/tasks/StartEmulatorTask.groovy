@@ -24,17 +24,8 @@ class StartEmulatorTask extends DefaultTask {
 
     @TaskAction
     def startEmulator() {
-
-        com.android
-
+        com.android.builder
         def sdkDirectory = project.android.sdkDirectory
-
-        AndroidDebugBridge adb = initAdb(sdkDirectory)
-
-        logger.lifecycle("Starting emulator")
-        logger.lifecycle("sdkDirectory " + sdkDirectory)
-
-        adb.devices
     }
 
     static AndroidDebugBridge initAdb(File sdk) {

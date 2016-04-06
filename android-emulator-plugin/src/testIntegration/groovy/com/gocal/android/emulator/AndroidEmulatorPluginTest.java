@@ -5,7 +5,7 @@ import org.junit.Test;
 public class AndroidEmulatorPluginTest {
 
     @Test
-    public void greeterPluginAddsGreetingTaskToProject() {
+    public void test1() {
 
     }
 }

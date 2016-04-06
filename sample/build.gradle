@@ -1,12 +1,12 @@
 buildscript {
     repositories {
         jcenter()
-        repositories { flatDir name: 'libs', dirs: "../../../../build/libs" }
+        repositories { flatDir name: 'libs', dirs: "../android-emulator-plugin/build/libs" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'com.gocal.emulator:android-emulator-plugin:1.0-SNAPSHOT'
+        //classpath 'com.gocal.emulator:android-emulator-plugin:1.0-SNAPSHOT'
     }
 }
 
