@@ -1,4 +1,4 @@
-rootProject.name = 'root'
+rootProject.name = 'android-emulator-plugin-root'
 
 include ':android-emulator-plugin'
 include ':sample'

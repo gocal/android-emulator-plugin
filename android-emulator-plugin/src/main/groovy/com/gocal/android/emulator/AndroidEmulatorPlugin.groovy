@@ -7,7 +7,7 @@ import org.gradle.api.tasks.StopExecutionException
 
 class AndroidEmulatorPlugin implements Plugin<Project> {
 
-    public final static String TASK_GROUP = "emulator"
+    public final static String EXTENSION_NAME = "emulator"
 
     @Override
     void apply(Project project) {
@@ -15,8 +15,7 @@ class AndroidEmulatorPlugin implements Plugin<Project> {
             throw new StopExecutionException("'android' plugin is missing.")
         }
 
-        def extension = project.extensions.create(TASK_GROUP, AndroidEmulatorExtension)
-
+        project.extensions.create(EXTENSION_NAME, AndroidEmulatorExtension)
         project.task(StartEmulatorTask.NAME, type: StartEmulatorTask)
     }
 }
