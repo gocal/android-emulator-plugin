@@ -1,12 +1,12 @@
 buildscript {
     repositories {
         jcenter()
-        repositories { flatDir name: 'libs', dirs: "../android-emulator-plugin/build/libs" }
+        repositories { flatDir name: 'libs', dirs: "../plugin/build/libs" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
-        classpath 'com.gocal.emulator:android-emulator-plugin:1.0-SNAPSHOT'
+        classpath 'com.gocal.emulator:android-emulator:1.0-SNAPSHOT'
     }
 }
 
@@ -16,7 +16,7 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'android-emulator'
+//apply plugin: 'android-emulator'
 
 android {
     compileSdkVersion 19
@@ -31,7 +31,8 @@ android {
     }
 }
 
+/*
 emulator {
     avdName 'nexus'
 }
-
+*/

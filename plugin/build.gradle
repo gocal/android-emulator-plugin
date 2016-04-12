@@ -5,6 +5,7 @@ repositories {
     jcenter()
 }
 
+jar.baseName = 'android-emulator'
 group 'com.gocal.emulator'
 version '1.0-SNAPSHOT'
 

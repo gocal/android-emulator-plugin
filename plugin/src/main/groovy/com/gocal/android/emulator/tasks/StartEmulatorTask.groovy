@@ -10,13 +10,16 @@ import java.util.logging.Logger
 
 class StartEmulatorTask extends DefaultTask {
 
-    public static String NAME = 'startEmulator'
+    public static String NAME = "startEmulator"
 
     private static final Logger LOG = LoggerFactory.getLogger(StartEmulatorTask.class)
 
+    /*
     public StartEmulatorTask() {
+        super();
         setGroup(PluginConfig.GROUP_EMULATOR)
     }
+    */
 
     @TaskAction
     def startEmulator() {
