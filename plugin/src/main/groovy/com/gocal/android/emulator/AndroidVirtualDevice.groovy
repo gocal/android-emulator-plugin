@@ -1,7 +1,8 @@
-package com.gocal.android.emulator.avd
+package com.gocal.android.emulator
 
 class AndroidVirtualDevice {
     String name;
+
     String device;
     File path;
     String target;

@@ -8,9 +8,10 @@ class AndroidEmulator {
 
     Logger logger = LoggerFactory.getLogger(AndroidEmulator.simpleName)
 
-    String emulatorPath;
-    String adbPath;
-    AndroidDebugBridge androidDebugBridge;
+    String emulatorPath
+    String adbPath
+    AndroidDebugBridge androidDebugBridge
+    AndroidVirtualDevice avd
 
     AndroidEmulator(String emulatorPath, String adbPath) {
         this.emulatorPath = emulatorPath;
@@ -25,7 +26,7 @@ class AndroidEmulator {
 
     public void start() {
         logger.error("start")
-        runEmulator(new EmulatorOption(EmulatorParameter.AVD, "nexus"))
+        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name))
     }
 
     void stop() {
