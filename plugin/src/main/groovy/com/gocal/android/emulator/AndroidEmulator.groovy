@@ -26,7 +26,8 @@ class AndroidEmulator {
 
     public void start() {
         logger.error("start")
-        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name))
+        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name),
+                    new EmulatorOption(EmulatorParameter.NO_WINDOW))
     }
 
     void stop() {

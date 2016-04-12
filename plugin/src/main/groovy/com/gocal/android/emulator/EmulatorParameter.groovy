@@ -5,6 +5,7 @@ enum EmulatorParameter {
     LIST_AVDS("list-avds"),
     AVD("avd"),
     VERSION("version"),
+    NO_WINDOW("no-window")
 
     private String value;
 
