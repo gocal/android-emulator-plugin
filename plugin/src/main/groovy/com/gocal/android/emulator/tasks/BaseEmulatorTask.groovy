@@ -1,30 +1,24 @@
-package com.gocal.android.emulator
+package com.gocal.android.emulator.tasks
 
 import com.android.ddmlib.AndroidDebugBridge
+import com.gocal.android.emulator.AndroidEmulator
+import com.gocal.android.emulator.config.PluginConfig
 import org.apache.commons.io.FileUtils
-import org.gradle.api.Project
-import org.gradle.testfixtures.ProjectBuilder
-import org.junit.Test
+import org.gradle.api.DefaultTask
 
-class SampleTest {
+abstract class BaseEmulatorTask extends DefaultTask {
 
-    @Test
-    public void testStartEmulator() {
+    protected AndroidEmulator emulator;
 
-        def projectDir = new File('..\\sample')
+    public BaseEmulatorTask() {
+        super();
+        setGroup(PluginConfig.GROUP_EMULATOR)
 
-        Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
-        project.getPlugins().apply 'com.android.application'
         def androidExtension = project.android;
         def androidHome = getAndroidHome(androidExtension)
-
         def emulatorFile = FileUtils.getFile(androidHome, "tools", "emulator.exe")
         def adbFile = FileUtils.getFile(androidHome, "platform-tools", "adb.exe")
-        def emulator = new AndroidEmulator(emulatorFile.absolutePath, adbFile.absolutePath)
-        def version = emulator.stop()
-        if(version != null) {
-
-        }
+        emulator = new AndroidEmulator(emulatorFile.absolutePath, adbFile.absolutePath)
     }
 
     private static String getAndroidHome(androidExtension) {

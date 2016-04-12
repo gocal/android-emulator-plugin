@@ -16,7 +16,7 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
-//apply plugin: 'android-emulator'
+apply plugin: 'android-emulator'
 
 android {
     compileSdkVersion 19
@@ -27,7 +27,7 @@ android {
         versionName 'v0.0.1'
 
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 23
     }
 }
 

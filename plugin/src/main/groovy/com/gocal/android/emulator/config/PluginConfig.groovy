@@ -1,5 +1,5 @@
 package com.gocal.android.emulator.config
 
 class PluginConfig {
-    public static String GROUP_EMULATOR = 'emulator'
+    public static String GROUP_EMULATOR = 'android'
 }

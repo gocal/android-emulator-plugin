@@ -1,5 +1,6 @@
 package com.gocal.android.emulator
 
+import com.android.ddmlib.AndroidDebugBridge
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -8,14 +9,18 @@ class AndroidEmulator {
     Logger logger = LoggerFactory.getLogger(AndroidEmulator.simpleName)
 
     String emulatorPath;
+    String adbPath;
+    AndroidDebugBridge androidDebugBridge;
 
-    AndroidEmulator(String emulatorPath) {
+    AndroidEmulator(String emulatorPath, String adbPath) {
         this.emulatorPath = emulatorPath;
+        this.adbPath = adbPath;
+        this.androidDebugBridge = AndroidDebugBridge.createBridge(adbPath, false);
     }
 
     public String getVersion() {
         String versionString = runEmulatorGetOutput(new EmulatorOption(EmulatorParameter.VERSION)).get(0)
-        return versionString.substring(versionString.indexOf("version"))
+        return versionString.substring(versionString.indexOf("version") + 9)
     }
 
     public void start() {
@@ -23,17 +28,13 @@ class AndroidEmulator {
         runEmulator(new EmulatorOption(EmulatorParameter.AVD, "nexus"))
     }
 
+    void stop() {
+        executeCommand(adbPath, "emu", "kill")
+    }
+
     private Process runEmulator(EmulatorOption... options) {
         String[] command = getEmulatorLaunchCommand(options);
-        try {
-            return Runtime.getRuntime().exec(command)
-        }
-        catch (IOException ioe) {
-            // we'll return false;
-        }
-        catch (InterruptedException ie) {
-            // we'll return false;
-        }
+        return executeCommand(command)
     }
 
     private List<String> runEmulatorGetOutput(EmulatorOption... options) {
@@ -58,5 +59,18 @@ class AndroidEmulator {
             }
         }
         return command.toArray(new String[command.size()])
+    }
+
+    private Process executeCommand(String... parameters) {
+        logger.error(parameters.join(" "))
+        try {
+            return Runtime.getRuntime().exec(parameters)
+        }
+        catch (IOException ioe) {
+            // we'll return false;
+        }
+        catch (InterruptedException ie) {
+            // we'll return false;
+        }
     }
 }
