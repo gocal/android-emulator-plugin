@@ -31,8 +31,7 @@ android {
     }
 }
 
-/*
 emulator {
     avdName 'nexus'
 }
-*/
+

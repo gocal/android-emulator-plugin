@@ -4,7 +4,6 @@ import com.gocal.android.emulator.tasks.StartEmulatorTask
 import com.gocal.android.emulator.tasks.StopEmulatorTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.Copy
 import org.gradle.api.tasks.StopExecutionException
 
 class EmulatorPlugin implements Plugin<Project> {
@@ -19,6 +18,7 @@ class EmulatorPlugin implements Plugin<Project> {
 
         // project.extensions.add EXTENSION_NAME, EmulatorExtension
         project.extensions.create(EXTENSION_NAME, EmulatorExtension)
+
         project.tasks.create(name: StartEmulatorTask.NAME, type: StartEmulatorTask) {}
         project.tasks.create(name: StopEmulatorTask.NAME, type: StopEmulatorTask) {}
     }
