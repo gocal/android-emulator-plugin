@@ -1,5 +1,6 @@
 package com.gocal.android.emulator
 
+import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Test
@@ -7,20 +8,19 @@ import org.junit.Test
 class SampleTest {
 
     @Test
-    public void aaa() {
+    public void testStartEmulator() {
 
         def projectDir = new File('..\\sample')
 
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
         project.getPlugins().apply 'com.android.application'
-        if(project != null) {
-            def androidExtension = project.android;
-            String androidHome = getAndroidHome(androidExtension)
+        def androidExtension = project.android;
+        String androidHome = getAndroidHome(androidExtension)
 
-            File emulatorFile = new File(androidHome + "\\tools\\emulator.exe")
-
-            def emulator = new AndroidEmulator(emulatorFile)
-            emulator.start()
+        File emulatorFile = FileUtils.getFile(androidHome, "tools", "emulator.exe")
+        def emulator = new AndroidEmulator(emulatorFile.getAbsolutePath())
+        def version = emulator.getVersion()
+        if(version != null) {
 
         }
     }
