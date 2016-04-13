@@ -1,7 +1,7 @@
 package com.gocal.android.emulator
 
 import com.android.ddmlib.AndroidDebugBridge
-import com.gocal.android.emulator.avd.AndroidVirtualDevice
+import com.gocal.android.emulator.avd.Avd
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -12,7 +12,7 @@ class AndroidEmulator {
     String emulatorPath
     String adbPath
     AndroidDebugBridge androidDebugBridge
-    AndroidVirtualDevice avd
+    Avd avd
 
     AndroidEmulator(String emulatorPath, String adbPath) {
         this.emulatorPath = emulatorPath;

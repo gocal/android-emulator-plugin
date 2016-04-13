@@ -1,6 +1,6 @@
 package com.gocal.android.emulator.tasks
 
-import com.gocal.android.emulator.avd.AndroidVirtualDevice
+import com.gocal.android.emulator.avd.Avd
 import com.gocal.android.emulator.EmulatorExtension
 import org.gradle.api.tasks.TaskAction
 import org.slf4j.Logger
@@ -17,7 +17,7 @@ class StartEmulatorTask extends BaseEmulatorTask {
         LOG.error("starting emulator")
 
         EmulatorExtension emulatorExtension = project.emulator
-        def avd = new AndroidVirtualDevice()
+        def avd = new Avd()
         avd.name = emulatorExtension.avdName
 
         emulator.avd = avd
