@@ -1,6 +1,7 @@
 package com.gocal.android.emulator
 
 import com.android.ddmlib.AndroidDebugBridge
+import com.gocal.android.emulator.avd.AndroidVirtualDevice
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

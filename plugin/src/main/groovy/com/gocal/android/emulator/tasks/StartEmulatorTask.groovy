@@ -1,6 +1,6 @@
 package com.gocal.android.emulator.tasks
 
-import com.gocal.android.emulator.AndroidVirtualDevice
+import com.gocal.android.emulator.avd.AndroidVirtualDevice
 import com.gocal.android.emulator.EmulatorExtension
 import org.gradle.api.tasks.TaskAction
 import org.slf4j.Logger
