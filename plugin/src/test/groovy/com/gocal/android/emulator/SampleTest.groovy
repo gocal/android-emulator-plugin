@@ -14,6 +14,7 @@ class SampleTest {
     @Test
     public void testStartEmulator() {
 
+        /*
         def projectDir = new File('..\\sample')
 
         def connector = GradleConnector.newConnector().forProjectDirectory(projectDir)
@@ -28,8 +29,7 @@ class SampleTest {
         } finally {
             connection?.close()
         }
-
-
+        */
 
         /*
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
