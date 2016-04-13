@@ -2,7 +2,7 @@ package com.gocal.android.emulator.avd
 
 public class Skin {
 
-    public static Skin HVGA = new Skin("HVGA");
+    public static Skin HVGA = new Skin("HVGA")
 
     String name
 
