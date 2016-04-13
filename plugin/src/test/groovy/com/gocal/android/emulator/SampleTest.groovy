@@ -38,9 +38,13 @@ class SampleTest {
         def androidExtension = project.android;
         def androidHome = getAndroidHome(androidExtension)
 
+
+
         AvdUtils utlis = new AvdUtils(androidHome)
 
-        utlis.createAvd(null)
+        String tmp = projectDir.absolutePath + "\\build\\tmp\\aav"
+
+        utlis.createAvd(tmp, null)
 
         /*
         def emulatorFile = FileUtils.getFile(androidHome, "tools", "emulator.exe")
