@@ -12,6 +12,7 @@ class WaitForEmulatorTask extends BaseEmulatorTask {
 
     @TaskAction
     void waitForEmulator() {
+
         throw new IllegalStateException("Not implemented")
     }
 }

@@ -1,6 +1,7 @@
 package com.gocal.android.emulator
 
 import com.android.ddmlib.AndroidDebugBridge
+import com.gocal.android.emulator.avd.AvdUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
@@ -14,29 +15,34 @@ class SampleTest {
     @Test
     public void testStartEmulator() {
 
-        /*
+
         def projectDir = new File('..\\sample')
-
-        def connector = GradleConnector.newConnector().forProjectDirectory(projectDir)
-        def connection = connector.connect()
-
-        try {
-
-            BuildLauncher builder = connection.newBuild()
-            builder.forTasks("startEmulator").run()
-            def model = connection.getModel(GradleProject)
-
-        } finally {
-            connection?.close()
-        }
-        */
-
         /*
-        Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
+               def connector = GradleConnector.newConnector().forProjectDirectory(projectDir)
+               def connection = connector.connect()
 
+                    try {
+
+                        BuildLauncher builder = connection.newBuild()
+                        builder.forTasks("startEmulator").run()
+                        def model = connection.getModel(GradleProject)
+
+                    } finally {
+                        connection?.close()
+                    }
+                */
+
+
+        Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
+        project.getPlugins().apply 'com.android.application'
         def androidExtension = project.android;
         def androidHome = getAndroidHome(androidExtension)
 
+        AvdUtils utlis = new AvdUtils(androidHome)
+
+        utlis.createAvd(null)
+
+        /*
         def emulatorFile = FileUtils.getFile(androidHome, "tools", "emulator.exe")
         def adbFile = FileUtils.getFile(androidHome, "platform-tools", "adb.exe")
         def emulator = new AndroidEmulator(emulatorFile.absolutePath, adbFile.absolutePath)
@@ -45,6 +51,7 @@ class SampleTest {
 
         }
         */
+
     }
 
     private static String getAndroidHome(androidExtension) {
