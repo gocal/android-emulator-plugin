@@ -17,7 +17,7 @@ class EmulatorPlugin implements Plugin<Project> {
         }
 
         // project.extensions.add EXTENSION_NAME, EmulatorExtension
-        project.extensions.create(EXTENSION_NAME, EmulatorExtension)
+        project.extensions.create(EXTENSION_NAME, EmulatorExtension, project)
 
         project.tasks.create(name: StartEmulatorTask.NAME, type: StartEmulatorTask) {}
         project.tasks.create(name: StopEmulatorTask.NAME, type: StopEmulatorTask) {}
