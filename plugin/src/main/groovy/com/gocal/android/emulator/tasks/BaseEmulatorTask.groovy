@@ -1,6 +1,5 @@
 package com.gocal.android.emulator.tasks
 
-import com.android.ddmlib.AndroidDebugBridge
 import com.gocal.android.emulator.AndroidEmulator
 import com.gocal.android.emulator.config.PluginConfig
 import org.apache.commons.io.FileUtils

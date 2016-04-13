@@ -1,7 +1,7 @@
 package com.gocal.android.emulator.tasks
 
-import com.gocal.android.emulator.avd.Avd
 import com.gocal.android.emulator.EmulatorExtension
+import com.gocal.android.emulator.avd.Avd
 import org.gradle.api.tasks.TaskAction
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

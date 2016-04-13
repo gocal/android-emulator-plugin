@@ -5,9 +5,9 @@ public class Avd {
     boolean snapshot
     File sdCard
     File path
-    Abi abi
+    AvdAbi abi
     String device // TODO cheeck
     String name
-    Skin skin
+    AvdSkin skin
     AvdTag tag
 }
