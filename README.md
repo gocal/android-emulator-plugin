@@ -1,7 +1,7 @@
 Android Emulator Plugin
 =======================
 
-[![Build Status](https://travis-ci.org/gocal/android-emulator-plugin.png?branch=master)](https://travis-ci.org/stanfy/spoon-gradle-plugin)
+[![Build Status](https://travis-ci.org/gocal/android-emulator-plugin.png?branch=master)](https://travis-ci.org/gocal/android-emulator-plugin)
 
 Usage
 -----
