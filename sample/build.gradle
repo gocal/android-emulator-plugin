@@ -6,7 +6,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.0.0'
-        //classpath 'com.gocal.emulator:android-emulator:1.0-SNAPSHOT'
+        classpath 'com.gocal.emulator:android-emulator:1.0-SNAPSHOT'
     }
 }
 
@@ -16,15 +16,11 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
-//apply plugin: 'android-emulator'
+apply plugin: 'android-emulator'
 
 android {
     compileSdkVersion 19
     buildToolsVersion '23.0.3'
-
-    jacoco {
-        version = '0.7.3.201502191951'
-    }
 
     defaultConfig {
         versionCode 100000
@@ -35,12 +31,15 @@ android {
     }
 }
 
-/*
 emulator {
     avdName 'nexus'
 
     avd {
-
+        name = "sample_hvga"
+        skin = "HVGA"
+        abi = "X86_64"
+        tag = "GOOGLE_APIS"
+        apiLevel = 22
     }
 }
-*/
+

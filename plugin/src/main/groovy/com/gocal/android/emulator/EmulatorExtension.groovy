@@ -14,8 +14,9 @@ class EmulatorExtension {
     }
 
     Avd avd(Closure closure) {
-        def avd = project.configure(new Avd(), closure)
-        return avd
+        def avd = (Avd) project.configure(new Avd(), closure)
+        this.avd = avd
+        avd
     }
 
 }

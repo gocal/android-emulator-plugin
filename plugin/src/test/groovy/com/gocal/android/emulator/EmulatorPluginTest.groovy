@@ -10,6 +10,22 @@ import org.junit.Test
 class EmulatorPluginTest {
 
     @Test
+    public void pluginTest() {
+        def projectDir = new File('..\\sample')
+        Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
+        project.getPlugins().apply 'com.android.application'
+        def plugin = new EmulatorPlugin()
+        plugin.apply(project)
+
+        EmulatorExtension emulatorExtension = project.extensions.findByType(EmulatorExtension)
+
+        if(emulatorExtension != null) {
+
+        }
+    }
+
+
+    @Test
     public void startEmulator() {
         def projectDir = new File('..\\sample')
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
@@ -60,7 +76,6 @@ class EmulatorPluginTest {
         } finally {
             connection?.close()
         }
-        */
 
         def projectDir = new File('..\\sample')
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
@@ -72,6 +87,8 @@ class EmulatorPluginTest {
         def adbFile = FileUtils.getFile(androidHome, "platform-tools", "adb.exe")
         def emulator = new AndroidEmulator(emulatorFile.absolutePath, adbFile.absolutePath)
         def version = emulator.version
+              */
+
     }
 
     private static String getAndroidHome(androidExtension) {
