@@ -17,10 +17,9 @@ class StartEmulatorTask extends BaseEmulatorTask {
         LOG.error("starting emulator")
 
         EmulatorExtension emulatorExtension = project.emulator
-        def avd = new Avd()
+        def avd = project.emulator.avd
         avd.name = emulatorExtension.avdName
-
-        emulator.avd = avd
+        emulator.set = avd
         emulator.start()
     }
 }

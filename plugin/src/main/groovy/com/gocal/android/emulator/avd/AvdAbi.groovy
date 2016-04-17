@@ -11,4 +11,13 @@ public enum AvdAbi {
     AvdAbi(String name) {
         this.name = name
     }
+
+    public static AvdAbi asAvdAbi(String value) {
+        for (AvdAbi avd : values()) {
+            if(avd.name.equals(value)) {
+                return avd
+            }
+        }
+        return null
+    }
 }

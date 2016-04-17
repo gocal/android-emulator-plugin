@@ -10,4 +10,22 @@ public class Avd {
     String name
     AvdSkin skin
     AvdTag tag
+    int apiLevel
+
+
+    @Override
+    public String toString() {
+        return "Avd{" +
+                "target=" + target +
+                ", snapshot=" + snapshot +
+                ", sdCard=" + sdCard +
+                ", path=" + path +
+                ", abi=" + abi +
+                ", device='" + device + '\'' +
+                ", name='" + name + '\'' +
+                ", skin=" + skin +
+                ", tag=" + tag +
+                ", apiLevel=" + apiLevel +
+                '}';
+    }
 }

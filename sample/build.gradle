@@ -22,6 +22,10 @@ android {
     compileSdkVersion 19
     buildToolsVersion '23.0.3'
 
+    jacoco {
+        version = '0.7.3.201502191951'
+    }
+
     defaultConfig {
         versionCode 100000
         versionName 'v1.0.0'

@@ -20,15 +20,18 @@ class AndroidEmulator {
         this.androidDebugBridge = AndroidDebugBridge.createBridge(adbPath, false);
     }
 
+    public void setAvd(Avd avd) {
+        this.avd = avd
+    }
+
     public String getVersion() {
         String versionString = runEmulatorGetOutput(new EmulatorOption(EmulatorParameter.VERSION)).get(0)
         return versionString.substring(versionString.indexOf("version") + 9)
     }
 
     public void start() {
-        logger.error("start")
-        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name),
-                new EmulatorOption(EmulatorParameter.NO_WINDOW))
+        logger.info("start")
+        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name))
     }
 
     void stop() {
