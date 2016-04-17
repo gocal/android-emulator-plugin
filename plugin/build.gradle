@@ -9,7 +9,6 @@ jar.baseName = 'android-emulator'
 group 'com.gocal.emulator'
 version '1.0-SNAPSHOT'
 
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     baseName = jar.baseName
     classifier = 'sources'
@@ -25,7 +24,7 @@ dependencies {
     compile gradleApi()
     compile localGroovy()
 
-    compile 'com.android.tools.build:gradle:1.5.0'
+    compile 'com.android.tools.build:gradle:2.0.0'
 
     testCompile gradleTestKit()
     testCompile 'junit:junit:4.12'

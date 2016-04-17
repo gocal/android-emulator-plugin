@@ -1,29 +1,30 @@
 package com.gocal.android.emulator.avd
 
 import com.android.sdklib.IAndroidTarget
-import com.android.sdklib.SdkManager
-import com.android.sdklib.SystemImage
-import com.android.sdklib.internal.androidTarget.PlatformTarget
+
+
 import com.android.sdklib.internal.avd.AvdInfo
 import com.android.sdklib.internal.avd.AvdManager
-import com.android.sdklib.repository.descriptors.IdDisplay
+import com.android.sdklib.repositoryv2.AndroidSdkHandler
 import com.android.utils.ILogger
 import com.android.utils.NullLogger
 
 public class AvdUtils implements ILogger {
 
     AvdManager avdManager
-    SdkManager sdkManager
     ILogger sdkLog
 
     public AvdUtils(String androidHome) {
+        def sdkHandler = AndroidSdkHandler.getInstance(new File(androidHome))
         sdkLog = NullLogger.getLogger() // todo
-        sdkManager = SdkManager.createManager(androidHome, sdkLog)
-        avdManager = AvdManager.getInstance(sdkManager.getLocalSdk(), sdkLog)
+        avdManager = AvdManager.getInstance(sdkHandler, sdkLog)
     }
 
     public void createAvd(String directory, Avd avd) {
 
+        avdManager.getValidAvds()
+
+        /*
         IAndroidTarget[] targets = sdkManager.getTargets();
 
         def target = targets[2]
@@ -31,7 +32,7 @@ public class AvdUtils implements ILogger {
         def image = target.getSystemImages()[0]
 
         def avdFolder = new File(directory)
-
+        */
 
         AvdInfo newAvd = avdManager.createAvd(
                 avdFolder,
