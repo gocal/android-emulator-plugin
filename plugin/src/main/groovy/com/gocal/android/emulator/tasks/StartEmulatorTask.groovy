@@ -10,16 +10,19 @@ class StartEmulatorTask extends BaseEmulatorTask {
 
     public static String NAME = "startEmulator"
 
-    private Logger LOG = LoggerFactory.getLogger(StartEmulatorTask.class)
+    private Logger logger = LoggerFactory.getLogger(StartEmulatorTask.class)
 
     @TaskAction
     void startEmulator() {
-        LOG.error("starting emulator")
+        logger.error("starting emulator")
 
         EmulatorExtension emulatorExtension = project.emulator
         def avd = project.emulator.avd
         avd.name = emulatorExtension.avdName
-        emulator.set = avd
+        emulator.avd = avd
+
+        logger.error("Start avd " + avd)
+
         emulator.start()
     }
 }

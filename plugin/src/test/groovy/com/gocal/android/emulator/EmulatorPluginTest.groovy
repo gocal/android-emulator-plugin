@@ -5,11 +5,14 @@ import com.gocal.android.emulator.utils.TestUtils
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
+import org.gradle.tooling.BuildLauncher
+import org.gradle.tooling.GradleConnector
+import org.gradle.tooling.model.GradleProject
 import org.junit.Test
 
 class EmulatorPluginTest {
 
-    @Test
+    //@Test
     public void pluginTest() {
         def projectDir = new File('..\\sample')
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
@@ -22,10 +25,25 @@ class EmulatorPluginTest {
         if(emulatorExtension != null) {
 
         }
+
+        def connector = GradleConnector.newConnector().forProjectDirectory(projectDir)
+        def connection = connector.connect()
+        try {
+
+            BuildLauncher builder = connection.newBuild()
+            def model = connection.getModel(GradleProject)
+
+            if(model != null) {
+
+            }
+
+        } finally {
+            connection?.close()
+        }
     }
 
 
-    @Test
+    //@Test
     public void startEmulator() {
         def projectDir = new File('..\\sample')
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()
@@ -45,7 +63,7 @@ class EmulatorPluginTest {
         emulator.start()
     }
 
-    @Test
+    //@Test
     public void stopEmulator() {
         def projectDir = new File('..\\sample')
         Project project = ProjectBuilder.builder().withProjectDir(projectDir).build()

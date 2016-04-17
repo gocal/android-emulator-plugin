@@ -41,5 +41,6 @@ emulator {
         tag = "GOOGLE_APIS"
         apiLevel = 22
     }
+
 }
 

@@ -5,7 +5,7 @@ import org.gradle.api.Project
 
 class EmulatorExtension {
     String avdName
-    Avd avd
+    Avd avd = new Avd()
 
     private Project project
 
@@ -13,10 +13,8 @@ class EmulatorExtension {
         this.project = project
     }
 
-    Avd avd(Closure closure) {
-        def avd = (Avd) project.configure(new Avd(), closure)
-        this.avd = avd
-        avd
+    void avd(Closure closure) {
+        project.configure(avd, closure)
     }
 
 }

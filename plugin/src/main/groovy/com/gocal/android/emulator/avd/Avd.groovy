@@ -3,8 +3,6 @@ package com.gocal.android.emulator.avd
 public class Avd {
     AvdTarget target
     boolean snapshot
-    File sdCard
-    File path
     AvdAbi abi
     String device // TODO cheeck
     String name
@@ -18,8 +16,6 @@ public class Avd {
         return "Avd{" +
                 "target=" + target +
                 ", snapshot=" + snapshot +
-                ", sdCard=" + sdCard +
-                ", path=" + path +
                 ", abi=" + abi +
                 ", device='" + device + '\'' +
                 ", name='" + name + '\'' +
