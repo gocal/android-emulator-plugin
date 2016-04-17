@@ -25,7 +25,7 @@ class AvdHelperTest {
         avd.abi = AvdAbi.X86_64
         avd.tag = AvdTag.GOOGLE_APIS
         avd.apiLevel = 22
-        //def avds = avdHelper.listAvds()
+        avd.skin = AvdSkin.WVGA800
 
         avdHelper.createAvd(avdDir, avd)
     }

@@ -2,7 +2,7 @@ package com.gocal.android.emulator.utils
 
 class TestUtils {
 
-    private static String getAndroidHome(androidExtension) {
+    public static String getAndroidHome(androidExtension) {
         def androidHome
         if (androidExtension.hasProperty('sdkHandler')) {
             androidHome = "${androidExtension.sdkHandler.sdkFolder}"

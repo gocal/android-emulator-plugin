@@ -18,4 +18,14 @@ public enum AvdSkin {
     AvdSkin(String name) {
         this.name = name
     }
+
+    public static AvdSkin asAvdSkin(File file) {
+        def name = file.name
+
+        for (AvdSkin skin : values()) {
+            if(skin.name.equals(name)) {
+                return skin
+            }
+        }
+    }
 }

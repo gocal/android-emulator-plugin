@@ -46,8 +46,8 @@ public class AvdHelper {
         String avdName = avd.name
         def avdFolder = new File(directory, avdName)
 
-        File skinFolder = null
-        String skinName = null
+        File skinFolder = getSkinFile(systemImage, avd.skin)
+        String skinName = AvdSkin.asAvdSkin(skinFolder).name
         String sdcard = avd.sdCard
         Map<String, String> hardwareConfig = new HashMap<>()
         Map<String, String> bootProps = new HashMap<>()
@@ -109,5 +109,14 @@ public class AvdHelper {
         avd.tag = AvdTag.asAvdTag(image.tag.id)
         avd.apiLevel = image.androidVersion.apiLevel
         return avd
+    }
+
+    private File getSkinFile(ISystemImage image, AvdSkin skin) {
+        for(File skinFile : image.getSkins()) {
+            def imageSkin = AvdSkin.asAvdSkin(skinFile)
+            if(skin == imageSkin) {
+                return skinFile
+            }
+        }
     }
 }
