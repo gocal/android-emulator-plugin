@@ -26,8 +26,10 @@ dependencies {
 
     compile 'com.android.tools.build:gradle:2.0.0'
 
-    testCompile gradleTestKit()
-    testCompile 'junit:junit:4.12'
+    testCompile(group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4') {
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+    }
+
 }
 
 
