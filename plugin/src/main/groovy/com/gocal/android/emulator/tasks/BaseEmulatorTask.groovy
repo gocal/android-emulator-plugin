@@ -1,7 +1,7 @@
 package com.gocal.android.emulator.tasks
 
 import com.gocal.android.emulator.AndroidEmulator
-import com.gocal.android.emulator.config.PluginConfig
+import com.gocal.android.emulator.PluginConfig
 import org.apache.commons.io.FileUtils
 import org.gradle.api.DefaultTask
 

@@ -4,7 +4,7 @@ import com.gocal.android.emulator.avd.Avd
 import org.gradle.api.Project
 
 class EmulatorExtension {
-    String avdName
+
     Avd avd = new Avd()
 
     private Project project

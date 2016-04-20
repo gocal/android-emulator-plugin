@@ -34,7 +34,7 @@ public class AvdHelper {
         return avds
     }
 
-    public void createAvd(String directory, Avd avd) {
+    public boolean createAvd(String directory, Avd avd) {
 
         def systemImageManager = sdkHandler.getSystemImageManager(new LoggerProgressIndicator(logger))
         def systemImage = findSystemImage(avd, systemImageManager.getImages())
@@ -49,11 +49,11 @@ public class AvdHelper {
         File skinFolder = getSkinFile(systemImage, avd.skin)
         String skinName = AvdSkin.asAvdSkin(skinFolder).name
         String sdcard = avd.sdCard
-        Map<String, String> hardwareConfig = new HashMap<>()
-        Map<String, String> bootProps = new HashMap<>()
-        boolean createSnapshot = avd.snapshot
-        boolean removePrevious = false
-        boolean editExisting = true
+        Map<String, String> hardwareConfig = avd.hardwareConfig
+        Map<String, String> bootProps = avd.bootProperties
+        boolean createSnapshot = avd.createSnapshot
+        boolean removePrevious = avd.removePrevious
+        boolean editExisting = avd.editExisting
 
         AvdInfo newAvd = avdManager.createAvd(
                 avdFolder,
@@ -70,9 +70,7 @@ public class AvdHelper {
                 androidLogger
         )
 
-        if (newAvd != null) {
-
-        }
+        return newAvd != null;
     }
 
     private ISystemImage findSystemImage(Avd avd, Collection<ISystemImage> images) {
@@ -85,31 +83,27 @@ public class AvdHelper {
 
     }
 
-    private boolean matches(Avd avd, ISystemImage systemImage) {
-        def systemAvd = from(systemImage)
+    private boolean matches(Avd avd, ISystemImage image) {
 
-        if (avd.abi != systemAvd.abi) {
+        def abi = AvdAbi.asAvdAbi(image.abiType)
+        def tag = AvdTag.asAvdTag(image.tag.id)
+        def apiLevel = image.androidVersion.apiLevel
+
+        if (avd.abi != abi) {
             return false;
         }
 
-        if (avd.tag != systemAvd.tag) {
+        if (avd.tag != tag) {
             return false;
         }
 
-        if (avd.apiLevel != systemAvd.apiLevel) {
+        if (avd.apiLevel != apiLevel) {
             return false;
         }
 
         return true;
     }
 
-    private Avd from(ISystemImage image) {
-        def avd = new Avd()
-        avd.abi = AvdAbi.asAvdAbi(image.abiType)
-        avd.tag = AvdTag.asAvdTag(image.tag.id)
-        avd.apiLevel = image.androidVersion.apiLevel
-        return avd
-    }
 
     private File getSkinFile(ISystemImage image, AvdSkin skin) {
         for(File skinFile : image.getSkins()) {

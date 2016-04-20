@@ -30,11 +30,15 @@ class AndroidEmulator {
     }
 
     public void start() {
+        if(avd == null) {
+            throw new IllegalArgumentException("avd is not specified")
+        }
         logger.info("start")
         runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name))
     }
 
-    void stop() {
+    public void stop() {
+        logger.info("stop")
         executeCommand(adbPath, "emu", "kill")
     }
 
