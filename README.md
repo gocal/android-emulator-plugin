@@ -24,7 +24,13 @@ android {
 }
 
 emulator {
-    avdName 'nexus7'
+    avd {
+        name = "sample_hvga"
+        skin = "HVGA"
+        abi = "X86_64"
+        tag = "GOOGLE_APIS"
+        apiLevel = 22
+    }
 }
 
 ```

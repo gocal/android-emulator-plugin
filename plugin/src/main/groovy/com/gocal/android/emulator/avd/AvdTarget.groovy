@@ -1,4 +1,5 @@
 package com.gocal.android.emulator.avd
 
-public class CpuAbi {
+class AvdTarget {
+    public String name
 }

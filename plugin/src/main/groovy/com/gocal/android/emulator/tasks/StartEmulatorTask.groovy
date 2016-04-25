@@ -1,7 +1,7 @@
 package com.gocal.android.emulator.tasks
 
-import com.gocal.android.emulator.avd.AndroidVirtualDevice
 import com.gocal.android.emulator.EmulatorExtension
+import com.gocal.android.emulator.avd.Avd
 import org.gradle.api.tasks.TaskAction
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -10,17 +10,19 @@ class StartEmulatorTask extends BaseEmulatorTask {
 
     public static String NAME = "startEmulator"
 
-    private Logger LOG = LoggerFactory.getLogger(StartEmulatorTask.class)
+    private Logger logger = LoggerFactory.getLogger(StartEmulatorTask.class)
 
     @TaskAction
     void startEmulator() {
-        LOG.error("starting emulator")
+        logger.error("starting emulator")
 
         EmulatorExtension emulatorExtension = project.emulator
-        def avd = new AndroidVirtualDevice()
+        def avd = project.emulator.avd
         avd.name = emulatorExtension.avdName
-
         emulator.avd = avd
+
+        logger.error("Start avd " + avd)
+
         emulator.start()
     }
 }

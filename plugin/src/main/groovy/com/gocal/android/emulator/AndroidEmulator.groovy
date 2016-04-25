@@ -1,7 +1,7 @@
 package com.gocal.android.emulator
 
 import com.android.ddmlib.AndroidDebugBridge
-import com.gocal.android.emulator.avd.AndroidVirtualDevice
+import com.gocal.android.emulator.avd.Avd
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -12,12 +12,16 @@ class AndroidEmulator {
     String emulatorPath
     String adbPath
     AndroidDebugBridge androidDebugBridge
-    AndroidVirtualDevice avd
+    Avd avd
 
     AndroidEmulator(String emulatorPath, String adbPath) {
         this.emulatorPath = emulatorPath;
         this.adbPath = adbPath;
         this.androidDebugBridge = AndroidDebugBridge.createBridge(adbPath, false);
+    }
+
+    public void setAvd(Avd avd) {
+        this.avd = avd
     }
 
     public String getVersion() {
@@ -26,9 +30,8 @@ class AndroidEmulator {
     }
 
     public void start() {
-        logger.error("start")
-        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name),
-                    new EmulatorOption(EmulatorParameter.NO_WINDOW))
+        logger.info("start")
+        runEmulator(new EmulatorOption(EmulatorParameter.AVD, avd.name))
     }
 
     void stop() {
